@@ -1,5 +1,3 @@
-import { css } from '@emotion/react'
-
-export const defaultTransition = css`
-    transition: 400ms ease-in;
-`
+export const defaultTransition = {
+    default: '400ms ease-in'
+}

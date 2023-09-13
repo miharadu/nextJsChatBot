@@ -1,4 +1,3 @@
-'use client'
 import { css } from '@emotion/react'
 import { color, font } from './globals'
 
@@ -68,3 +67,20 @@ export const GlobalStyles = css`
         }
     }
 `
+
+// import { createTheme } from '@mui/material/styles'; // todo use mui theme
+
+// export const theme = createTheme({ // todo use mui theme
+//     palette: {
+//         primary:
+//         {
+//             main: "#e06717",
+//             contrastText: "#fff",
+//         },
+//         secondary:
+//         {
+//             main: "#eceeef",
+//             contrastText: "#fff",
+//         },
+//     }
+// })

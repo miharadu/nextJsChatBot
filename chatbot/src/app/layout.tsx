@@ -2,10 +2,11 @@
 import type { Metadata } from 'next'
 import { GlobalStyles } from './shared/style/globalStyles'
 import { Global } from '@emotion/react'
+import { QuestionDataProvider } from './shared/context/QuestionDataContext'
 
 export const metadata: Metadata = {
-  title: 'ChatBot',
-  description: 'The best insurance ChatBot',
+  title: 'BotZuri',
+  description: 'The friendly insurance chatbot',
 }
 
 export default function RootLayout({
@@ -16,10 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="./favicon.ico" />
+        <link rel="icon" href="./on.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
-        {/* todo / recommendation */}
+        {/* todo? */}
         {/* <link rel="icon" type="image/png" sizes="36x36" href="/android-chrome-36x36.png" />
         <link rel="icon" type="image/png" sizes="48x48" href="/android-chrome-48x48.png" />
         <link rel="icon" type="image/png" sizes="72x72" href="/android-chrome-72x72.png" />
@@ -39,7 +40,11 @@ export default function RootLayout({
       </head>
       <body>
         <Global styles={GlobalStyles} />
-        {children}
+        <QuestionDataProvider>
+          <>
+            {children}
+          </>
+        </QuestionDataProvider>
       </body>
     </html>
   )
