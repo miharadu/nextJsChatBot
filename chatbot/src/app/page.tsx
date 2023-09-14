@@ -8,6 +8,7 @@ import { ChatMessage } from './shared/components/ChatMessage/ChatMessage'
 import { jsonQuestions, sendAnswers } from './shared/API'
 import useQuestionData from './shared/context/QuestionDataContext'
 import { Question } from './shared/interfaces'
+import { text } from './shared/text'
 
 export default function Home() {
   const [questionsJsonFile, setQuestionsJsonFile] = React.useState<Question[]>([])
@@ -20,7 +21,7 @@ export default function Home() {
     jsonQuestions.then((questions) => {
       setQuestionsJsonFile(questions)
     })
-  }, [])
+  }, [jsonQuestions])
 
   React.useEffect(() => {
     setNextId(questionsJsonFile[0]?.id)
@@ -32,7 +33,7 @@ export default function Home() {
     } else {
       return null
     }
-  }, [nextId])
+  }, [questionsJsonFile, nextId])
 
   React.useEffect(() => {
     if (nextId === false) {
@@ -56,7 +57,11 @@ export default function Home() {
   const renderQuestions = React.useCallback(() => {
     return questionsListToShow().map((question: Question, i: number, questions: string | any[]) => {
       return (
-        <ChatMessage key={question.id + question.name} questionData={question} buttonsDisabled={i + 1 !== questions.length || showEndMessage} />
+        <ChatMessage
+          key={question.id + question.name}
+          questionData={question}
+          buttonsDisabled={i + 1 !== questions.length || showEndMessage}
+        />
       )
     })
   }, [questionsListToShow, showEndMessage])
@@ -73,14 +78,14 @@ export default function Home() {
     <main >
       <ChatContainer >
         <ChatHeader>
-          <div>BotZuri</div>
+          <div>{text.botName}</div>
           <div><IconButton aria-label="delete" color="inherit"><DeleteForeverOutlinedIcon /></IconButton></div>
           <div><IconButton aria-label="close" color="inherit"><CloseIcon /></IconButton></div>
         </ChatHeader>
         <ChatContent>
           {renderQuestions()}
           {showEndMessage &&
-            <EndMessage>Herzlichen Dank für Ihre Angaben</EndMessage>
+            <EndMessage>{text.endFlowMessage}</EndMessage>
           }
         </ChatContent>
       </ ChatContainer>
