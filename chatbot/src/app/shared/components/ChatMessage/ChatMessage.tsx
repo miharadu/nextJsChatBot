@@ -33,7 +33,8 @@ export const ChatMessage = (props: {
                             <Button
                                 key={props.questionData?.id + valueOption.nextId.toString() + valueOption.value.toString()}
                                 disabled={props.buttonsDisabled}
-                                style={{ opacity: `${!props.buttonsDisabled || chosenAnswer?.value == valueOption.value ? '1' : '0.3'}` }} // todo instead of inline styling, use theme/palette mui
+                                style={{ opacity: `${!props.buttonsDisabled || chosenAnswer?.value == valueOption.value ? '1' : '0.3'}` }}
+                                // todo instead of inline styling, use theme/palette mui
                                 onClick={() => {
                                     const lastAnswer: Answer = { name: props.questionData?.name, value: valueOption.value }
                                     updateConversationCallback(lastAnswer)

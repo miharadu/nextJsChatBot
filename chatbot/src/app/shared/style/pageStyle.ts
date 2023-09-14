@@ -3,6 +3,8 @@ import { defaultTransition, color, font, boxShadow, borderRadius } from './globa
 
 export const ChatContainer = styled.aside`
   position: relative;
+  top: 5px;
+  right: 10px;
   display: flex;
   flex-direction: column;
   background-color: ${color.lightgrey4}; 

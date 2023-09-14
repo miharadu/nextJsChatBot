@@ -54,6 +54,10 @@ export default function Home() {
     return questionsList
   }, [nextQuestiontoShow])
 
+  React.useEffect(() => {
+    setShownQuestionsList(questionsListToShow())
+  }, [questionsListToShow])
+
   const renderQuestions = React.useCallback(() => {
     return questionsListToShow().map((question: Question, i: number, questions: string | any[]) => {
       return (
@@ -65,10 +69,6 @@ export default function Home() {
       )
     })
   }, [questionsListToShow, showEndMessage])
-
-  React.useEffect(() => {
-    setShownQuestionsList(questionsListToShow())
-  }, [questionsListToShow])
 
   React.useEffect(() => {
     if (showEndMessage) sendAnswers(currentConversation)
