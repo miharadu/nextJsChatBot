@@ -26,6 +26,6 @@ export const color = {
     blueFooter: '#2167ae',
 
     orange: '#e06717',
-    orangActive: '#EA771C', // blended orange with orangeHover - :active not used by brand, but recommended
+    orangeActive: '#EA771C', // blended orange with orangeHover - :active not used by brand, but recommended
     orangeHover: '#FF9627',
 }

@@ -61,22 +61,22 @@ export const ButtonContainer = styled.div`
   text-align: center;
     & > * { // todo use mui palette/theme instead of using !important - ccareful with !important
       transition: ${defaultTransition.default} !important;
-      background-color: ${color.darkblue} !important;
+      background-color: ${color.orange} !important;
       color: ${color.white} !important; 
       font-family: ${font.regular} !important;
       margin: 0 5px !important;
       box-shadow: ${boxShadow.default} !important;
 
         :hover{
-          background-color: ${color.blueHover} !important;
+          background-color: ${color.orangeHover} !important;
         }
 
         :active, :focus{
-          background-color: ${color.blueActive} !important;
+          background-color: ${color.orangeActive} !important;
         }
 
         :disabled{
-          background-color: ${color.orange} !important;
+          background-color: ${color.blueHover} !important;
           color: ${color.grey} !important;
         }
     }
