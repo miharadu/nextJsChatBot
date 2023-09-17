@@ -3,7 +3,8 @@
 
 import { Answer, Question } from "./interfaces"
 
-export const jsonQuestions: Promise<Question[]> =
+export const jsonQuestions: Promise<Question[]> = // todo Loading spinner and error handling
+    // options: getStaticProps with revalidate (z.B. revalidate: 60 // seconds), getStaticPaths, getServerSideProps (for SSR)
     fetch('http://miha-codechallenge.s3.eu-central-1.amazonaws.com/flow.json')
         .then(response => response.json())
         .then(jsonResponse => {
@@ -27,7 +28,7 @@ export const jsonQuestions: Promise<Question[]> =
         })
         .catch(error => { console.log(error) })
 
-export const sendAnswers = (fullConversation: Answer[]) => {
+export const sendAnswers = (fullConversation: Answer[]) => {  // todo Loading spinner and error handling
     fetch('https://virtserver.swaggerhub.com/L8475/task/1.0.1/conversation', {
         method: "PUT",
         body: JSON.stringify(fullConversation),
