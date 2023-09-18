@@ -27,7 +27,7 @@ export default function Home() {
     setNextId(questionsJsonFile[0]?.id)
   }, [questionsJsonFile])
 
-  const nextQuestiontoShow = React.useCallback(() => {
+  const nextQuestiontoShow: Question | null | undefined = React.useMemo(() => {
     if (nextId) {
       return questionsJsonFile.find((question) => question.id === nextId)
     } else {
@@ -41,13 +41,9 @@ export default function Home() {
     }
   }, [nextId])
 
-  React.useEffect(() => {
-    nextQuestiontoShow()
-  }, [nextId])
-
   const questionsListToShow = React.useCallback(() => {
     const questionsList: Question[] = [...shownQuestionsList]
-    const nextQuestion = nextQuestiontoShow()
+    const nextQuestion = nextQuestiontoShow
     if (nextQuestion !== undefined && nextQuestion !== null) {
       questionsList.push(nextQuestion)
     }
